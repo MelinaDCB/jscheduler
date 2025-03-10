@@ -2,19 +2,19 @@ package project.scheduler;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "RoomCourse") 
 public class RoomCourse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id; // Unique ID for RoomCourse
 
-    @OneToOne
-    @JoinColumn(name = "room_id") // Foreign key reference to Room
+    @ManyToOne
+    @JoinColumn(name = "room_id", referencedColumnName = "id") // Foreign key reference to Room
     private Room room;
 
-    @OneToOne
-    @JoinColumn(name = "course_id") // Foreign key reference to Course
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id") // Foreign key reference to Course
     private Course course;
 
     // Getters and Setters
